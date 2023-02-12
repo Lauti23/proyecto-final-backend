@@ -3,7 +3,10 @@ dotenv.config();
 import express from "express";
 import cluster from "cluster";
 import { cpus } from "os";
-console.log(cpus().length)
+
+//Variable para la cantidad de núcleos
+const numCpus = cpus().length;
+
 import { PORT, modo } from "./yargs/commands.js"
 console.log("MODO ELEGIDO: ", modo)
 import handlebars from "express-handlebars";
@@ -28,7 +31,19 @@ import { profileRoute } from "./routes/profile.route.js";
 import { infoRoute } from "./routes/info.route.js";
 import { logoutRoute } from "./routes/logout.route.js";
 
-const app = express();
+//CONDICIONAL PARA VER EN QUE MODO SE EJECUTARA EL SERVIDOR.
+if(modo === "cluster" && cluster.isPrimary) {
+    console.log(`Primary process ${process.pid}`)
+    for(let i = 0; i < numCpus; i++) {
+        cluster.fork()
+    }
+    cluster.on("exit", (worker, code) => {
+        console.log(`Worker ${worker.process.pid} died with ${code}`)
+        cluster.fork()
+    })
+} else {
+    
+    const app = express();
 
     app.use(express.json());
     app.use(express.urlencoded({extended: true}));
@@ -83,21 +98,8 @@ const app = express();
             await productManager.deleteAll()
             res.send("Items deleted")
         })
+
     const server = app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
 
-// if(modo == "cluster" && cluster.isPrimary) {
-//     console.log(`Primary process ${process.pid}`)
-//     for(let i = 0; i < cpus().length; i++) {
-//         cluster.fork()
-//     }
-//     // cluster.on("exit", (worker, code) => {
-//     //     console.log(`Worker ${worker.process.pid} died with ${code}`)
-//     //     cluster.fork()
-//     // })
-// } else if(modo == "fork") {
-    
-// } else {
-//     console.log("El modo que has elegido no es correcto. (fork o cluster)")
-//     process.exit()
-// }
+}
 
