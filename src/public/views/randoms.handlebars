@@ -1,0 +1,21 @@
+<header>
+    <nav class="nav">
+        <h1 class="navTitle">INICIO</h1>
+        <ul class="navList">
+            <li><a href="/products">Productos</a></li>
+            <li><a href="/chat">Chat</a></li>
+            <li><a href="/profile">Perfil</a></li>
+        </ul>
+        <ul class="navAuth">
+            <li><a href="/login">Log In</a></li>
+            <li><a href="/register">Registrarse</a></li>
+        </ul>
+    </nav>
+</header>
+<h2>Randoms</h2>
+<h3>{{cantidad}}</h3>
+<ul>
+    {{#each result}}
+    <li>{{this}}</li>
+    {{/each}}
+</ul>

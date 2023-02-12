@@ -1,0 +1,24 @@
+<header>
+    <nav class="nav">
+        <h1 class="navTitle">INICIO</h1>
+        <ul class="navList">
+            <li><a href="/products">Productos</a></li>
+            <li><a href="/chat">Chat</a></li>
+            <li><a href="/profile">Perfil</a></li>
+        </ul>
+        <ul class="navAuth">
+            <li><a href="/login">Log In</a></li>
+            <li><a href="/register">Registrarse</a></li>
+        </ul>
+    </nav>
+</header>
+<h2 class="loginTitle">Log In</h2>
+<hr class="loginHr">
+<form class="loginForm" action="/login" method="post">
+    <label for="email">Ingrese su email:</label>
+    <input type="email" name="email" placeholder="Insert email">
+    <label for="password">Ingrese su contraseña:</label>
+    <input type="password" name="password" placeholder="Insert password">
+    <button type="submit">Log In</button>
+</form>
+<p class="loginMessage">¿No tenes cuenta? <a href="/register">Registrate!</a></p>

@@ -1,0 +1,218 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background-color: #EDF2F4;
+}
+
+header {
+    background-color: #D90429;
+    color: #2B2D42;
+}
+
+.nav {
+    height: 5rem;
+    display: flex;
+    text-transform: uppercase;
+    align-items: center;
+}
+
+.nav a {
+    text-decoration: none;
+    color: black;
+}
+
+.navTitle {
+    width: 10%;
+    text-align: center;
+    font-weight: 800;
+    font-style: italic;
+    font-size: 2rem;
+}
+
+.navList {
+    list-style: none;
+    width: 75%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.navAuth {
+    list-style: none;
+    width: 15%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/*************************** REGISTER ***************************/
+
+.registerTitle {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 2rem auto;
+    text-transform: uppercase;
+}
+
+.registerHr {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+    width: 70%;
+    margin: 0 auto;
+}
+
+.registerForm {
+    width: 40%;
+    background-color: #EF233C;
+    border-radius: 20px;
+    margin: 3rem auto;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.registerForm label {
+    align-self: start; 
+    width: 75%;
+    margin: 1rem auto;
+    font-size: 1.2rem;
+    text-decoration: underline;
+}
+
+.registerForm input {
+    width: 75%;
+    font-size: 1.2rem;
+    padding: 12px 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.registerForm button {
+    margin: 2rem auto;
+    width: 40%;
+    height: 2.5rem;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    background-color: whitesmoke;
+}
+
+.registerForm button:hover {
+    cursor: pointer;
+}
+
+.registerMessage {
+    text-align: center;
+}
+
+.registerMessage a {
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+    color: #EF233C;
+}
+
+/*************************** LOGIN ***************************/
+
+.loginTitle {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 2rem auto;
+    text-transform: uppercase;
+}
+
+.loginHr {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+    width: 70%;
+    margin: 0 auto;
+}
+
+.loginForm {
+    width: 40%;
+    background-color: #EF233C;
+    border-radius: 20px;
+    margin: 3rem auto;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.loginForm label {
+    align-self: start; 
+    width: 75%;
+    margin: 1rem auto;
+    font-size: 1.2rem;
+    text-decoration: underline;
+}
+
+.loginForm input {
+    width: 75%;
+    font-size: 1.2rem;
+    padding: 12px 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.loginForm button {
+    margin: 2rem auto;
+    width: 40%;
+    height: 2.5rem;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    background-color: whitesmoke;
+}
+
+.loginForm button:hover {
+    cursor: pointer;
+}
+
+.loginMessage {
+    text-align: center;
+}
+
+.loginMessage a {
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+    color: #EF233C;
+}
+
+/*************************** PROFILE ***************************/
+
+.profileTitle {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 2rem auto;
+    text-transform: uppercase;
+}
+
+.profileHr {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+    width: 70%;
+    margin: 0 auto;
+}
