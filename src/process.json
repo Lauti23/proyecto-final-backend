@@ -1,0 +1,29 @@
+{
+    "apps": [
+        {
+            "name": "Proceso 1",
+            "script": "src/app.js",
+            "watch" : true,
+            "args": "8081"
+
+        }, 
+        {
+            "name": "Proceso 2",
+            "script": "src/app.js",
+            "watch" : true,
+            "args": "8082"
+        },
+        {
+            "name": "Proceso 3",
+            "script": "src/app.js",
+            "watch" : true,
+            "args": "8083"
+        },
+        {
+            "name": "Proceso 4",
+            "script": "src/app.js",
+            "watch" : true,
+            "args": "8084"
+        }
+    ]
+}

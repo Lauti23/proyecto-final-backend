@@ -1,14 +1,15 @@
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
 
-let PORT;
+
+let portNumber;
 let modo;
 
 
 yargs(hideBin(process.argv))
     .command("$0", "Establece el puerto 8080 por default", //ESTABLECE EL PUERTO 8080 POR DEFAULT.
     () => {}, (arg) => {
-        PORT = 8080;
+        portNumber = 8080;
         modo = "fork";
     })
 
@@ -23,10 +24,10 @@ yargs(hideBin(process.argv))
             demandOption: true
         })
     }, (arg) => {
-        PORT = arg.port;
+        portNumber = arg.port;
         modo = arg.modo;
     })
     .parse();
 
 
-export { PORT, modo };
+export { portNumber, modo };

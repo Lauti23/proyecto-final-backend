@@ -4,5 +4,5 @@ export const indexRoute = express.Router();
 
 indexRoute
     .get("/", (req, res) => {
-        res.send("asd")
+        res.render("index")
     })
