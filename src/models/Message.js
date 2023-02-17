@@ -8,18 +8,17 @@ mongoose.connect(process.env.MONGO_DB_URL, {
     useUnifiedTopology: true
 })
     .then(db => console.log("Database connected")) 
-    .catch(err => console.log("Error to connect with database:", err.message))
+    .catch(err => console.log("Error to connect with database:", err.message));
 
+const collection = "messages";
 
-const collection = "products";
-
-const productSchema = new Schema({
-    name: String,
-    image: String,
-    price: Number,
-    stock: Number
-},{
+const messageSchema = new Schema({
+    email: String,
+    message: String,
+    date: String
+},
+{
     timestamps: true
-})
+}) 
 
-export const productModel = mongoose.model(collection, productSchema);
+export const messageModel = mongoose.model(collection, messageSchema);

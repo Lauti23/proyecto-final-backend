@@ -5,6 +5,6 @@ export const profileRoute = express.Router()
 
 profileRoute
     .get("/", isAuthenticated, (req, res) => {
-        console.log(req.user)
-        res.render("profile.handlebars")
+        console.log("PERFIL:", req.user)
+        res.render("profile.handlebars", {email: req.user.email})
     })

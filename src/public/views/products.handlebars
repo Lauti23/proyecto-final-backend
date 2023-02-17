@@ -1,0 +1,45 @@
+<header>
+    <nav class="nav">
+        <h1 class="navTitle">INICIO</h1>
+        <ul class="navList">
+            <li><a href="/products">Productos</a></li>
+            <li><a href="/chat">Chat</a></li>
+            <li><a href="/profile">Perfil</a></li>
+        </ul>
+        <ul class="navAuth">
+            <li><a href="/logout">Log Out</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <h2 class="productsTitle">PRODUCTOS</h2>
+    <hr class="productsHr">
+
+    <h4 class="productsSubtitle">Ingrese su producto</h4>
+    <form id="form" class="productsForm" method="post">
+        <label>Nombre del producto:</label>
+        <input name="product">
+        <label>Precio del producto:</label>
+        <input name="price">
+        <label>URL de la imágen del producto:</label>
+        <input name="url">
+        <label>Stock disponible:</label>
+        <input name="stock">
+        <button class="btn" type="submit">Guardar</button>
+        <label id="noData"></label>
+    </form>
+    <hr class="productsHr">
+    
+    <table id="table" class="productsTable">
+        <tr class="productsTableRow">
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Imagen</th>
+            <th>Stock</th>
+            <th>Eliminar</th>
+        </tr>
+    </table>
+</main>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="../js/products.js"></script>

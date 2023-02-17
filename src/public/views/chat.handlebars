@@ -1,0 +1,30 @@
+<header>
+    <nav class="nav">
+        <h1 class="navTitle">INICIO</h1>
+        <ul class="navList">
+            <li><a href="/products">Productos</a></li>
+            <li><a href="/chat">Chat</a></li>
+            <li><a href="/profile">Perfil</a></li>
+        </ul>
+        <ul class="navAuth">
+            <li><a href="/logout">Log Out</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <div id="chat" class="chatContainer">
+        <h3 class="chatTitle">Chat</h3>
+        <hr class="chatHr">
+        <h6 class="chatSubtitle">¡Bienvenido a la sala de chat!<p id="userEmail">{{email}}</p></h6>
+        <div id="chatHistory" class="chatHistory">
+            <p id="noMessagesYet">No hay mensajes aún</p>
+        </div>
+        <form id="chatBox" class="chatForm">
+            <input id="messageBox" name="message" placeholder="Escribe tu mensaje..." type="text">
+            <button id="sendMessageBtn" type="submit">Enviar</button>
+        </form>
+    </div>
+</main>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="../js/chat.js"></script>

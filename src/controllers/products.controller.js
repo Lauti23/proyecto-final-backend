@@ -1,4 +1,4 @@
-import { productModel } from "../models/Product.js";
+import { productModel } from "../models/Product.js"
 
 export class ProductManager {
     constructor(model) {
@@ -14,13 +14,22 @@ export class ProductManager {
         }
     }
 
+    async getProduct(data) {
+        let product = await this.model.findOne({name: data.name, image: data.image, price: data.price, stock: data.stock})
+        if(!product) {
+            return {status: "Error", message: "No se pudo encontrar el producto."}
+        } else {
+            return product
+        }
+    }
+
     async insert(item) {
         let product = new productModel({name: item.name, image: item.image, price: item.price, stock: item.stock})
         if(!item.name || !item.image || !item.price || !item.stock) {
             return {status: "Error", message: "Faltan campos por completar."}
         } else {
             product.save()
-            return {status: "Success", message: `Producto creado, ${product}`}
+            return product
         }
     }
 

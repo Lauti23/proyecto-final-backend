@@ -14,13 +14,19 @@ import session from "express-session";
 import passport from "passport";
 import "./passport/passport-local.js";
 import MongoStore from "connect-mongo";
+import { Server } from "socket.io";
 
-//PRODUCT MODEL
+//MODELS
 import { productModel } from "./models/Product.js";
+import { messageModel } from "./models/Message.js";
 
-//MANAGER DE PRODUCTOS
-import { ProductManager } from "./controllers/products.controller.js";
+//PRODUCT MANAGER
+import { ProductManager } from "./controllers/Products.controller.js";
 const productManager = new ProductManager(productModel)
+
+//MESSAGES MANAGER
+import { MessagesManager } from "./controllers/Messages.manager.js"
+const messagesManager = new MessagesManager(messageModel)
 
 //RUTAS
 import { indexRoute } from "./routes/index.route.js";
@@ -30,7 +36,8 @@ import { apiRandomsRoute } from "./routes/apiRandoms.route.js";
 import { profileRoute } from "./routes/profile.route.js";
 import { infoRoute } from "./routes/info.route.js";
 import { logoutRoute } from "./routes/logout.route.js";
-
+import { productsRoute } from "./routes/products.route.js";
+import { chatRoute } from "./routes/chat.route.js";
 
 // let PORT = process.argv[2] || 8080;
 
@@ -74,15 +81,17 @@ if(modo === "cluster" && cluster.isPrimary) {
     app.use("/login", loginRoute);
     app.use("/register", registerRoute);
     app.use("/profile", profileRoute);
+    app.use("/chat", chatRoute);
+    app.use("/products", productsRoute);
     app.use("/api/randoms", apiRandomsRoute);
     app.use("/info", infoRoute);
     app.use("/logout", logoutRoute);
-
+    
     //PROBANDO LOS METODOS DEL CONTROLLER EN RUTA PROVISORIA
     app //OBTIENE TODOS LOS PRODUCTOS
         .get("/getAll", async (req, res) => {
             let result = await productManager.getAll()
-            res.send(result)
+            res.send(req.user)
         })
         //CREA UN PRODUCTO
         .post("/getAll", async (req, res) => {
@@ -102,7 +111,34 @@ if(modo === "cluster" && cluster.isPrimary) {
             res.send("Items deleted")
         })
 
+
     const server = app.listen(PORT, () => console.log(`Server running on port ${PORT}, process: ${process.pid}`))
 
+    const io = new Server(server)
+    
+    io.on("connection", async (socket) => {
+        console.log(`Nuevo usuario se ha conectado.`)
+        const getData = async () => {
+            let products = await productManager.getAll()
+            let messages = await messagesManager.getAll()
+            socket.emit("productsData", products)
+            socket.emit("messagesData", messages)
+        }
+        getData();
+
+        socket.on("createMessage", async (data) => {
+            let messageInfo = await messagesManager.insert(data);
+            let message = await messagesManager.findMessage(messageInfo);
+            console.log(message)
+            io.emit("newMessage", message);
+        })
+
+        socket.on("createProduct", async (data) => {
+            let productInfo = await productManager.insert(data)
+            let product = await productManager.getProduct(productInfo)
+            io.emit("newProduct", product)
+        })
+    })
 }
+
 
