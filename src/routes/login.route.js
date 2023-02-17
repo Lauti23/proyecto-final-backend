@@ -1,16 +1,17 @@
 import express from "express";
 import passport from "passport";
+import { routeLogs } from "../middlewares/middlewares.js";
 
 export const loginRoute = express.Router();
 
 let currentUser;
 
 loginRoute  
-    .get("/", (req, res) => {
+    .get("/", routeLogs, (req, res) => {
         res.render("login.handlebars")
     })
 
-    .post("/", passport.authenticate("login", {
+    .post("/", routeLogs, passport.authenticate("login", {
         successRedirect: "/profile",
         failureRedirect: "/login",
         passReqToCallback: true

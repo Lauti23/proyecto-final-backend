@@ -1,6 +1,8 @@
 import express from "express";
 import core from "os"
 export const infoRoute = express.Router();
+import { routeLogs } from "../middlewares/middlewares.js";
+
 
 let data = [
     {
@@ -39,6 +41,6 @@ let data = [
 
 
 infoRoute
-    .get("/", (req, res) => {
+    .get("/", routeLogs, (req, res) => {
         res.render("info.handlebars", {data: data})
     })

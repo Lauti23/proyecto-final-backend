@@ -1,14 +1,15 @@
 import dotenv from "dotenv"
 dotenv.config()
 import mongoose, { Schema } from "mongoose";
+// import { logger } from "../utils/logger.js";
 
-mongoose.set('strictQuery', false);
-mongoose.connect(process.env.MONGO_DB_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-    .then(db => console.log("Database connected")) 
-    .catch(err => console.log("Error to connect with database:", err.message));
+// mongoose.set('strictQuery', false);
+// mongoose.connect(process.env.MONGO_DB_URL, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// })
+//     .then(db => logger.info("Conectado a la base de datos"))
+//     .catch(err => logger.error("Error al conectarse a la base de datos: ", err.message));
 
 const collection = "messages";
 

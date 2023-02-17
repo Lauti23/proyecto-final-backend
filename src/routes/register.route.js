@@ -1,14 +1,16 @@
 import express from "express";
 import passport from "passport";
+import { routeLogs } from "../middlewares/middlewares.js";
+
 
 export const registerRoute = express.Router();
 
 registerRoute   
-    .get("/", (req, res) => {
+    .get("/", routeLogs, (req, res) => {
         res.render("register.handlebars")
     })
 
-    .post("/", passport.authenticate("register", {
+    .post("/", routeLogs, passport.authenticate("register", {
         successRedirect: "/profile",
         failureRedirect: "/register",
         passReqToCallback: true

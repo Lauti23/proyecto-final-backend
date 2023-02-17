@@ -1,0 +1,171 @@
+Statistical profiling result from isolate-000001F95A503710-8280-v8.log, (740 ticks, 0 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+    664   89.7%          C:\WINDOWS\SYSTEM32\ntdll.dll
+     75   10.1%          C:\Program Files\nodejs\node.exe
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+      1    0.1%  100.0%  Function: ^get C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\graceful-fs\graceful-fs.js:26:18
+
+ [C++]:
+   ticks  total  nonlib   name
+
+ [Summary]:
+   ticks  total  nonlib   name
+      1    0.1%  100.0%  JavaScript
+      0    0.0%    0.0%  C++
+      8    1.1%  800.0%  GC
+    739   99.9%          Shared libraries
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+    664   89.7%  C:\WINDOWS\SYSTEM32\ntdll.dll
+
+     75   10.1%  C:\Program Files\nodejs\node.exe
+     60   80.0%    C:\Program Files\nodejs\node.exe
+     27   45.0%      Function: ^compileFunction node:vm:316:25
+     27  100.0%        Function: ^wrapSafe node:internal/modules/cjs/loader:1040:18
+     27  100.0%          Function: ^Module._compile node:internal/modules/cjs/loader:1080:37
+     26   96.3%            Function: ^Module._extensions..js node:internal/modules/cjs/loader:1135:37
+      1    3.7%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1135:37
+      5    8.3%      Function: ^stat node:internal/modules/cjs/loader:151:14
+      3   60.0%        Function: ^tryFile node:internal/modules/cjs/loader:395:17
+      2   66.7%          Function: ^tryExtensions node:internal/modules/cjs/loader:411:23
+      2  100.0%            Function: ^Module._findPath node:internal/modules/cjs/loader:505:28
+      1   33.3%          LazyCompile: ~finalizeEsmResolution node:internal/modules/cjs/loader:962:31
+      1  100.0%            Function: ^resolveExports node:internal/modules/cjs/loader:483:24
+      2   40.0%        Function: ^Module._findPath node:internal/modules/cjs/loader:505:28
+      2  100.0%          Function: ^Module._resolveFilename node:internal/modules/cjs/loader:865:35
+      2  100.0%            Function: ^Module._load node:internal/modules/cjs/loader:771:24
+      3    5.0%      Function: ^openSync node:fs:585:18
+      3  100.0%        Function: ^readFileSync node:fs:459:22
+      3  100.0%          Function: ^Module._extensions..js node:internal/modules/cjs/loader:1135:37
+      3  100.0%            Function: ^Module.load node:internal/modules/cjs/loader:992:33
+      2    3.3%      Function: ^statSync node:fs:1580:18
+      2  100.0%        Function: ^tryStatSync node:internal/modules/esm/resolve:189:3
+      2  100.0%          Function: ^finalizeResolution node:internal/modules/esm/resolve:396:28
+      2  100.0%            Function: ^moduleResolve node:internal/modules/esm/resolve:985:23
+      2    3.3%      Function: ^compileForInternalLoader node:internal/bootstrap/loaders:316:27
+      1   50.0%        LazyCompile: ~compileForPublicLoader node:internal/bootstrap/loaders:263:25
+      1  100.0%          Function: ^loadNativeModule node:internal/modules/cjs/helpers:44:26
+      1  100.0%            LazyCompile: ~Module._load node:internal/modules/cjs/loader:771:24
+      1   50.0%        Function: ^nativeModuleRequire node:internal/bootstrap/loaders:349:29
+      1  100.0%          Function: ~<anonymous> node:internal/modules/esm/loader:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:316:27
+      2    3.3%      C:\Program Files\nodejs\node.exe
+      1   50.0%        LazyCompile: ~createFunctionContext C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:216:56
+      1  100.0%          LazyCompile: ~compile C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:73:28
+      1  100.0%            LazyCompile: ~compileChildren C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:805:44
+      1   50.0%        Function: ^stat node:internal/modules/cjs/loader:151:14
+      1  100.0%          Function: ^Module._findPath node:internal/modules/cjs/loader:505:28
+      1  100.0%            LazyCompile: ~Module._resolveFilename node:internal/modules/cjs/loader:865:35
+      1    1.7%      LazyCompile: ~toNamespacedPath node:path:618:19
+      1  100.0%        LazyCompile: ~realpathSync node:fs:2460:22
+      1  100.0%          LazyCompile: ~finalizeResolution node:internal/modules/esm/resolve:396:28
+      1  100.0%            LazyCompile: ~moduleResolve node:internal/modules/esm/resolve:985:23
+      1    1.7%      LazyCompile: ~stat node:internal/modules/cjs/loader:151:14
+      1  100.0%        LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:505:28
+      1  100.0%          LazyCompile: ~Module._resolveFilename node:internal/modules/cjs/loader:865:35
+      1  100.0%            LazyCompile: ~<anonymous> node:internal/modules/esm/translators:233:36
+      1    1.7%      LazyCompile: ~patchProcessObject node:internal/bootstrap/pre_execution:103:28
+      1  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:29:36
+      1  100.0%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    1.7%      LazyCompile: ~parsersCb node:_http_common:169:65
+      1  100.0%        LazyCompile: ~alloc node:internal/freelist:15:8
+      1  100.0%          LazyCompile: ~connectionListenerInternal node:_http_server:471:36
+      1  100.0%            Function: ^defaultTriggerAsyncIdScope node:internal/async_hooks:455:36
+      1    1.7%      LazyCompile: ~parse file:///C:/Users/Lauti/Desktop/proyecto-final-backend-3ra-entrega/node_modules/yargs-parser/build/lib/yargs-parser.js:14:10
+      1  100.0%        LazyCompile: ~yargsParser.detailed file:///C:/Users/Lauti/Desktop/proyecto-final-backend-3ra-entrega/node_modules/yargs-parser/build/lib/index.js:56:33
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Users/Lauti/Desktop/proyecto-final-backend-3ra-entrega/node_modules/yargs/build/lib/yargs-factory.js:1321:40
+      1  100.0%            LazyCompile: ~parseAndUpdateUsage file:///C:/Users/Lauti/Desktop/proyecto-final-backend-3ra-entrega/node_modules/yargs/build/lib/command.js:150:24
+      1    1.7%      LazyCompile: ~onParseError node:internal/url:563:22
+      1  100.0%        C:\Program Files\nodejs\node.exe
+      1  100.0%          Function: ^URL node:internal/url:632:14
+      1  100.0%            Function: ^moduleResolve node:internal/modules/esm/resolve:985:23
+      1    1.7%      LazyCompile: ~initCJSParse node:internal/modules/esm/translators:58:28
+      1  100.0%        LazyCompile: ~commonjsStrategy node:internal/modules/esm/translators:148:60
+      1  100.0%          Function: ^moduleProvider node:internal/modules/esm/loader:459:28
+      1  100.0%            C:\Program Files\nodejs\node.exe
+      1    1.7%      LazyCompile: ~get C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\mongoose\lib\helpers\document\compile.js:190:20
+      1  100.0%        LazyCompile: ~markArraySubdocsPopulated C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\mongoose\lib\helpers\populate\markArraySubdocsPopulated.js:19:52
+      1  100.0%          LazyCompile: ~Document.$__init C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\mongoose\lib\document.js:668:38
+      1  100.0%            LazyCompile: ~syncWrapper C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\kareem\index.js:328:30
+      1    1.7%      LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:316:27
+      1  100.0%        Function: ^nativeModuleRequire node:internal/bootstrap/loaders:349:29
+      1  100.0%          Function: ~<anonymous> node:internal/modules/esm/loader:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:316:27
+      1    1.7%      LazyCompile: ~command C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\mongodb\lib\cmap\connection.js:261:12
+      1  100.0%        LazyCompile: ~<anonymous> C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\mongodb\lib\cmap\connect.js:78:43
+      1  100.0%          LazyCompile: ~prepareHandshakeDocument C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\mongodb\lib\cmap\connect.js:151:34
+      1  100.0%            LazyCompile: ~performInitialHandshake C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\mongodb\lib\cmap\connect.js:62:33
+      1    1.7%      LazyCompile: ~Server C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\mongodb\lib\sdam\server.js:29:16
+      1  100.0%        LazyCompile: ~createAndConnectServer C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\mongodb\lib\sdam\topology.js:467:32
+      1  100.0%          LazyCompile: ~<anonymous> C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\mongodb\lib\sdam\topology.js:173:57
+      1  100.0%            C:\Program Files\nodejs\node.exe
+      1    1.7%      LazyCompile: ~Query.find C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\mongoose\lib\query.js:2349:32
+      1  100.0%        LazyCompile: ~Query C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\mongoose\lib\query.js:93:15
+      1  100.0%          LazyCompile: ~model.Query C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\mongoose\lib\model.js:5162:25
+      1  100.0%            LazyCompile: ~findOne C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\mongoose\lib\model.js:2343:33
+      1    1.7%      LazyCompile: ~Module._extensions..json node:internal/modules/cjs/loader:1185:39
+      1  100.0%        Function: ^Module.load node:internal/modules/cjs/loader:992:33
+      1  100.0%          Function: ^Module._load node:internal/modules/cjs/loader:771:24
+      1  100.0%            Function: ^Module.require node:internal/modules/cjs/loader:1020:36
+      1    1.7%      LazyCompile: ~BaseServer C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\engine.io\build\server.js:22:16
+      1  100.0%        LazyCompile: ~Server C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\engine.io\build\server.js:365:1
+      1  100.0%          LazyCompile: ~attach C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\engine.io\build\engine.io.js:51:16
+      1  100.0%            LazyCompile: ~initEngine C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\socket.io\dist\index.js:281:15
+      1    1.7%      LazyCompile: ~<anonymous> C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\@colors\colors\lib\styles.js:90:36
+      1  100.0%        C:\Program Files\nodejs\node.exe
+      1  100.0%          Function: ~<anonymous> C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\@colors\colors\lib\styles.js:1:1
+      1  100.0%            Function: ^Module._compile node:internal/modules/cjs/loader:1080:37
+      1    1.7%      Function: ~<anonymous> node:https:1:1
+      1  100.0%        Function: ^compileForInternalLoader node:internal/bootstrap/loaders:316:27
+      1  100.0%          Function: ^compileForPublicLoader node:internal/bootstrap/loaders:263:25
+      1  100.0%            Function: ^loadNativeModule node:internal/modules/cjs/helpers:44:26
+      1    1.7%      Function: ^tryStatSync node:fs:413:21
+      1  100.0%        Function: ^readFileSync node:fs:459:22
+      1  100.0%          Function: ^Module._extensions..js node:internal/modules/cjs/loader:1135:37
+      1  100.0%            Function: ^Module.load node:internal/modules/cjs/loader:992:33
+      1    1.7%      Function: ^readPackage node:internal/modules/cjs/loader:301:21
+      1  100.0%        Function: ^resolveExports node:internal/modules/cjs/loader:483:24
+      1  100.0%          Function: ^Module._findPath node:internal/modules/cjs/loader:505:28
+      1  100.0%            Function: ^Module._resolveFilename node:internal/modules/cjs/loader:865:35
+      1    1.7%      Function: ^URL node:internal/url:632:14
+      1  100.0%        LazyCompile: ~getPackageScopeConfig node:internal/modules/esm/resolve:253:31
+      1  100.0%          LazyCompile: ~getPackageType node:internal/modules/esm/resolve:843:24
+      1  100.0%            LazyCompile: ~getFileProtocolModuleFormat node:internal/modules/esm/get_format:51:37
+      1    1.3%    LazyCompile: ~needFinish node:internal/streams/writable:652:20
+      1  100.0%      LazyCompile: ~finishMaybe node:internal/streams/writable:733:21
+      1  100.0%        LazyCompile: ~Writable.end node:internal/streams/writable:596:34
+      1  100.0%          LazyCompile: ~end C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\compression\index.js:92:28
+      1  100.0%            LazyCompile: ~writeend C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\express-session\index.js:260:24
+      1    1.3%    LazyCompile: ~config C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\dotenv\lib\main.js:58:17
+      1  100.0%      Script: ~<anonymous> file:///C:/Users/Lauti/Desktop/proyecto-final-backend-3ra-entrega/src/models/User.js:1:1
+      1  100.0%        C:\Program Files\nodejs\node.exe
+      1  100.0%          C:\Program Files\nodejs\node.exe
+      1  100.0%            LazyCompile: ~run node:internal/modules/esm/module_job:188:12
+      1    1.3%    Function: ^readPackage node:internal/modules/cjs/loader:301:21
+      1  100.0%      Function: ^readPackageScope node:internal/modules/cjs/loader:332:26
+      1  100.0%        Function: ^Module._extensions..js node:internal/modules/cjs/loader:1135:37
+      1  100.0%          Function: ^Module.load node:internal/modules/cjs/loader:992:33
+      1  100.0%            Function: ^Module._load node:internal/modules/cjs/loader:771:24
+      1    1.3%    Function: ^moduleResolve node:internal/modules/esm/resolve:985:23
+      1  100.0%      Function: ^defaultResolve node:internal/modules/esm/resolve:1124:30
+      1  100.0%        Function: ^ObjectDefineProperty.__proto__ node:internal/modules/esm/loader:150:5
+      1  100.0%          Function: ^resolve node:internal/modules/esm/loader:791:16
+      1  100.0%            Function: ^getModuleJob node:internal/modules/esm/loader:417:21
+      1    1.3%    Function: ^Module._load node:internal/modules/cjs/loader:771:24
+      1  100.0%      Function: ^Module.require node:internal/modules/cjs/loader:1020:36
+      1  100.0%        Function: ^require node:internal/modules/cjs/helpers:101:31
+      1  100.0%          Function: ~<anonymous> C:\Users\Lauti\Desktop\proyecto-final-backend-3ra-entrega\node_modules\express\lib\application.js:1:1
+      1  100.0%            LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1080:37
+

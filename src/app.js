@@ -16,6 +16,9 @@ import "./passport/passport-local.js";
 import MongoStore from "connect-mongo";
 import { Server } from "socket.io";
 
+//LOGGER
+import { logger } from "./utils/logger.js";
+
 //MODELS
 import { productModel } from "./models/Product.js";
 import { messageModel } from "./models/Message.js";
@@ -38,6 +41,7 @@ import { infoRoute } from "./routes/info.route.js";
 import { logoutRoute } from "./routes/logout.route.js";
 import { productsRoute } from "./routes/products.route.js";
 import { chatRoute } from "./routes/chat.route.js";
+import compression from "compression";
 
 // let PORT = process.argv[2] || 8080;
 
@@ -55,6 +59,7 @@ if(modo === "cluster" && cluster.isPrimary) {
     
     const app = express();
 
+    app.use(compression())
     app.use(express.json());
     app.use(express.urlencoded({extended: true}));
     app.use(express.static("src/public"));
@@ -112,7 +117,7 @@ if(modo === "cluster" && cluster.isPrimary) {
         })
 
 
-    const server = app.listen(PORT, () => console.log(`Server running on port ${PORT}, process: ${process.pid}`))
+    const server = app.listen(PORT, () => logger.info(`Server running on port ${PORT}, process: ${process.pid}`))
 
     const io = new Server(server)
     
