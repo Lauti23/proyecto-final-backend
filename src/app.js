@@ -7,7 +7,8 @@ import { cpus } from "os";
 //Variable para la cantidad de núcleos
 const numCpus = cpus().length;
 
-import { PORT, modo } from "./yargs/commands.js"
+// import { PORT, modo } from "./yargs/commands.js"
+let PORT = process.env.PORT || 8080;
 console.log("MODO ELEGIDO: ", modo)
 import handlebars from "express-handlebars";
 import session from "express-session";
