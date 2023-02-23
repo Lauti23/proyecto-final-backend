@@ -45,15 +45,10 @@ export class ProductManager {
         }
     }
 
-    async findAndDelete(item) {
+    async delete(item) {
         try {
-            let productToFind = await this.model.findOne({name: item.name})
-            if(!productToFind) {
-                return {status: "Error", message: "No hay productos en la base de datos."}
-            } else {
-                let productToDelete = await this.model.deleteOne({name: productToFind.name})
-                return {status: "Success", message: `Producto eliminado ${productToFind}`}
-            }   
+            let deletedProduct = await this.model.deleteOne({name: item})
+            return {status: "Success", message: `Product deleted: ${deletedProduct}`}
         } catch (error) {
             logger.error(error.message)   
         }

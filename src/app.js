@@ -64,7 +64,7 @@ if(modo === "cluster" && cluster.isPrimary) {
     app.use(express.urlencoded({extended: true}));
     app.use(express.static("src/public"));
     app.use(session({
-        store: MongoStore.create({mongoUrl: process.env.MONGO_SESSION_URL}),
+        store: MongoStore.create({mongoUrl: process.env.MONGOATLAS_SESSION_URL}),
         key: process.env.KEY,
         secret: process.env.SECRET,
         resave: false,
@@ -131,17 +131,24 @@ if(modo === "cluster" && cluster.isPrimary) {
         }
         getData();
 
+        const updateItems = async () => {
+            let data = await productManager.getAll();
+            io.emit("productsData", data);
+        }
+
         socket.on("createMessage", async (data) => {
-            let messageInfo = await messagesManager.insert(data);
-            let message = await messagesManager.findMessage(messageInfo);
-            console.log(message)
+            let message = await messagesManager.insert(data);
             io.emit("newMessage", message);
         })
 
         socket.on("createProduct", async (data) => {
-            let productInfo = await productManager.insert(data)
-            let product = await productManager.getProduct(productInfo)
+            let product = await productManager.insert(data)
             io.emit("newProduct", product)
+        })
+
+        socket.on("deleteProduct", async (data) => {
+            await productManager.delete(data);
+            updateItems();
         })
     })
 }

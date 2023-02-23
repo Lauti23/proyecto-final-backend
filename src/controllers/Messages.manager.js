@@ -44,7 +44,6 @@ export class MessagesManager {
             }
         } catch (error) {
             logger.error(error.message)
-            
         }
     }
 }

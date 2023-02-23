@@ -26,8 +26,8 @@ const submitProducts = (e) => {
 productsForm.addEventListener("submit", (e) => submitProducts(e));
 
 socket.on("productsData", data => {
-    if(data.length === 0) {
-        table.innerHTML = `<p class="noProdcuts">No hay productos almacenados.</p>`
+    if(data.status === "Error") {
+        table.innerHTML = `<p class="noProducts">No hay productos almacenados.</p>`
     } else {
         data.forEach(prod => {
             let tr = document.createElement("tr");
@@ -35,12 +35,19 @@ socket.on("productsData", data => {
                             <td class="productsTd">$ ${prod.price}</td>
                             <td class="productsTd"><img class="productsImage" src=${prod.image}></td>
                             <td class="productsTd">${prod.stock}</td>
-                            <td class="productsTd"><button class="productsDeleteBtn"> X </button></td>`
+                            <td class="productsTd"><button id="deleteBtn" class=${prod.name}> X </button></td>`
             table.append(tr);
+            tr.addEventListener("click", (e) => {
+                if(e.target.id === "deleteBtn") {
+                    let buttonClicked = e.target;
+                    let itemToDelete = buttonClicked.className;
+                    console.log(itemToDelete)
+                    socket.emit("deleteProduct", itemToDelete);
+                }
+            })
         });
     }
 })
-
 
 socket.on("newProduct", data => {
     let tr = document.createElement("tr");

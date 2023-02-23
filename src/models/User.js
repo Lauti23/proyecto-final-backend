@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 import { logger } from "../utils/logger.js";
 
 mongoose.set('strictQuery', false);
-mongoose.connect(process.env.MONGO_DB_URL, {
+mongoose.connect(process.env.MONGO_ATLAS_DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })  
