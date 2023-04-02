@@ -13,7 +13,7 @@ loginRoute
 
     .post("/", routeLogs, passport.authenticate("login", {
         successRedirect: "/profile",
-        failureRedirect: "/login",
+        failureRedirect: "/loginFailed",
         passReqToCallback: true
     }), (req, res) => {
         currentUser = req.user.email

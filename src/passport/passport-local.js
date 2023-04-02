@@ -31,7 +31,6 @@ passport.use("register", new LocalStrategy({
         await newUser.save()
         done(null, newUser)
     }
-    
 }))
 
 passport.use("login", new LocalStrategy({

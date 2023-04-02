@@ -416,3 +416,19 @@ header {
 .productsDeleteBtn:hover {
     cursor: pointer;
 }
+
+.loginFailed {
+    width: 50%;
+    margin: 2rem auto;
+    background-color: red;
+    padding: 1rem;
+    border-radius: 20px;
+}
+
+.registerFailed {
+    width: 50%;
+    margin: 2rem auto;
+    background-color: red;
+    padding: 1rem;
+    border-radius: 20px;
+}

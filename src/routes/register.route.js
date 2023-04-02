@@ -12,7 +12,7 @@ registerRoute
 
     .post("/", routeLogs, passport.authenticate("register", {
         successRedirect: "/profile",
-        failureRedirect: "/register",
+        failureRedirect: "/registerFailed",
         passReqToCallback: true
     }), (req, res) => {
 

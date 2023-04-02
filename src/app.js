@@ -7,8 +7,7 @@ import { cpus } from "os";
 //Variable para la cantidad de núcleos
 const numCpus = cpus().length;
 
-// import { PORT, modo } from "./yargs/commands.js"
-let PORT = process.env.PORT || 8080;
+import { PORT, modo } from "./yargs/commands.js"
 console.log("MODO ELEGIDO: ", modo)
 import handlebars from "express-handlebars";
 import session from "express-session";
@@ -43,6 +42,8 @@ import { logoutRoute } from "./routes/logout.route.js";
 import { productsRoute } from "./routes/products.route.js";
 import { chatRoute } from "./routes/chat.route.js";
 import compression from "compression";
+import { loginFailedRoute } from "./routes/loginFailed.route.js";
+import { registerFailedRoute } from "./routes/registerFailed.route.js";
 
 // let PORT = process.argv[2] || 8080;
 
@@ -85,7 +86,9 @@ if(modo === "cluster" && cluster.isPrimary) {
     //RUTAS
     app.use("/", indexRoute);
     app.use("/login", loginRoute);
+    app.use("/loginFailed", loginFailedRoute);
     app.use("/register", registerRoute);
+    app.use("/registerFailed", registerFailedRoute);
     app.use("/profile", profileRoute);
     app.use("/chat", chatRoute);
     app.use("/products", productsRoute);
@@ -93,31 +96,6 @@ if(modo === "cluster" && cluster.isPrimary) {
     app.use("/info", infoRoute);
     app.use("/logout", logoutRoute);
     
-    //PROBANDO LOS METODOS DEL CONTROLLER EN RUTA PROVISORIA
-    app //OBTIENE TODOS LOS PRODUCTOS
-        .get("/getAll", async (req, res) => {
-            let result = await productManager.getAll()
-            res.send(req.user)
-        })
-        //CREA UN PRODUCTO
-        .post("/getAll", async (req, res) => {
-            let newProduct = await productManager.insert(req.body)
-            // console.log(newProduct)
-            res.send(newProduct)
-        })
-        //ELIMINA UN SOLO PRODUCTO
-        .delete("/getAll", async (req, res) => {
-            let deleted = await productManager.findAndDelete(req.body)
-            console.log(deleted)
-            res.send(deleted)
-        })
-        //ELIMINA TODOS LOS PRODS
-        .delete("/delete", async (req, res) => {
-            await productManager.deleteAll()
-            res.send("Items deleted")
-        })
-
-
     const server = app.listen(PORT, () => logger.info(`Server running on port ${PORT}, process: ${process.pid}`))
 
     const io = new Server(server)
