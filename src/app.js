@@ -66,7 +66,7 @@ if(modo === "cluster" && cluster.isPrimary) {
     app.use(express.urlencoded({extended: true}));
     app.use(express.static("src/public"));
     app.use(session({
-        store: MongoStore.create({mongoUrl: process.env.MONGOATLAS_SESSION_URL}),
+        store: MongoStore.create({mongoUrl: process.env.MONGO_SESSION_URL}),
         key: process.env.KEY,
         secret: process.env.SECRET,
         resave: false,

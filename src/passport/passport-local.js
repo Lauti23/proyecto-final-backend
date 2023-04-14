@@ -20,8 +20,8 @@ passport.use("register", new LocalStrategy({
     passReqToCallback: true
 }, async (req, email, password, done) => {
     const user = await userModel.findOne({"email": email})
-    logger.warn("Email en uso", user)
     if(user) {
+        logger.warn("Email en uso", user)
         return done(null, false)
     } else {
         const newUser = new userModel()
